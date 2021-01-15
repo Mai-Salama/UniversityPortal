@@ -145,7 +145,7 @@ import Logout from "./logout";
 import NotificationsHR from './NotificationsHR';
 import NotificationsAM from './NotificationsAM';
  // Yassmin's Routes 
- import Viewprofile from './AM/Viewprofile'
+ import ViewprofileAM from './AM/ViewprofileAM'
  import HomeAM from './AM/Homepage';
  import Signin from './AM/Signin';
 import AttendanceAMM from './AM/AttendanceAMM';
@@ -410,9 +410,8 @@ function App() {
 
  {/* Yassmin's routes */}
  <Route path="/HomepageAM" component= {HomeAM}/>
- <Route path="/Homepage/Viewprofile">
-          <Viewprofile/>
-        </Route>
+ <Route path="/ViewprofileAM" component= {ViewprofileAM}/>
+
 
         <Route path="/Homepage/Signin">
           <Signin/>

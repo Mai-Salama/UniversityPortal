@@ -5,7 +5,7 @@ import { Input, TransitionablePortal } from 'semantic-ui-react'
 import Navbar from '../NavbarAM'
 import axios from "axios";
 import {useState} from 'react';
- import Modal from 'react-modal';
+import Modal from 'react-modal';
 
 
  
