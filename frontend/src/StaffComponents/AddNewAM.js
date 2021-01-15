@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
+import Navbar from '../NavbarHR.js';
 
 export default class AddNewAM extends Component {
     constructor(props){
@@ -49,6 +50,15 @@ export default class AddNewAM extends Component {
     render() {
         return (
             <div>
+            <Navbar />
+             <nav aria-label="breadcrumb">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item"><a href="/Home">Home</a></li>
+            <li className="breadcrumb-item"><a href="/Staff">Staff</a></li>
+            <li className="breadcrumb-item"><a href="/Staff/AcademicMembers">AcademicMembers</a></li>
+            <li className="breadcrumb-item active" aria-current="page">AddNewAcademicMember</li>
+          </ol>
+        </nav>
             <h1>Add new Academic Member</h1>
             <form onSubmit = {this.handleSubmit}>
             <div class="row">

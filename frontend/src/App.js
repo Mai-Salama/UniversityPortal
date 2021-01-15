@@ -1,10 +1,23 @@
 // import logo from './logo.svg';
 // import Whatever from "./Whatever"
 import './App.css';
+
+
+
+
+
+
+import {BrowserRouter as Router, Route} from "react-router-dom";
+import {Redirect} from 'react-router-dom';
+import ReactDOM from 'react-dom'
+
+
+
+
+
 import UpdatedLogin from './UpdatedLogin';
 import ChangePasswordAM from './ChangePasswordAM';
 import ChangePasswordHR from './ChangePasswordHR';
-import {BrowserRouter as Router, Route} from "react-router-dom";
 import Faculties from './FacComponents/Faculties';
 import AddNewFaculty from './FacComponents/AddNewFaculty';
 import UpdateFaculty from './FacComponents/UpdateFaculty';
@@ -17,7 +30,6 @@ import Courses from './FacComponents/Courses';
 import AddNewCourse from './FacComponents/AddNewCourse';
 import UpdateCourse from './FacComponents/UpdateCourse';
 import DeleteCourse from './FacComponents/DeleteCourse';
-import HomeHR from './HomeHR';
 import Staff from './StaffComponents/Staff';
 import HRstaff from './StaffComponents/HRstaff';
 import AcademicMembers from './StaffComponents/AcademicMembers';
@@ -103,6 +115,57 @@ import Viewslotlinkingrequests from "./hod/Viewslotlinkingrequests"
 import HODhomepage from "./hod/HODhomepage"
 import Viewcourseassignment from "./hod/Viewcourseassignment"
 import Submitted from "./hod/Submitted"
+//Miral's HR
+import HomeHR from "./home-hr.component";
+import ViewProfileHR from "./componentsHR/view-profile-hr.component";
+import Attendance from "./componentsHR/attendance.component";
+import Locations from "./componentsHR/locations.component";
+import ViewAllAttendanceRecords from "./componentsHR/view-all-attendance-records.component";
+import ViewAttendanceRecordsByMonth from "./componentsHR/view-attendance-records-by-month.component";
+import Leaves from "./componentsHR/leaves.component";
+import AddLocation from "./componentsHR/add-location.component"
+import Success from "./componentsHR/success.component";
+import DeleteLocation from "./componentsHR/delete-location.component";
+import UpdateLocation from "./componentsHR/update-locatoin.component";
+import SubmitALeaveRequest from "./componentsHR/submit-a-request.component";
+import SubmitAMaternityLeaveRequest from "./componentsHR/submit-a-maternity-leave-request.component";
+import SubmitACompensationLeaveRequest from "./componentsHR/submit-a-compensation-leave-request.component";
+import SubmitAnAccidentalLeaveRequest from "./componentsHR/submit-an-accidental-leave-request.component";
+import ViewLeaveRequests from "./componentsHR/view-leave-requests.component";
+import ViewMaternityStatus from"./componentsHR/view-maternity-status.component";
+import ViewCompensationStatus from "./componentsHR/view-compensation-status.component";
+import ViewAccidentalStatus from "./componentsHR/view-accidental-status.component";
+import SubmitASickLeaveRequest  from "./componentsHR/submit-a-sick-leave.component";
+import SubmitAnAnnualLeaveRequest from "./componentsHR/submit-annual-leave-request.component";
+import ViewSickStatus from "./componentsHR/view-sick-leave.component";
+import ViewAnnualStatus from "./componentsHR/view-annual-status.component";
+
+import Logout from "./logout";
+
+import NotificationsHR from './NotificationsHR';
+import NotificationsAM from './NotificationsAM';
+ // Yassmin's Routes 
+ import Viewprofile from './AM/Viewprofile'
+ import HomeAM from './AM/Homepage';
+ import Signin from './AM/Signin';
+import AttendanceAMM from './AM/AttendanceAMM';
+import Requests from './AM/Requests';
+import Replacement from './AM/Replacement';
+import SubmitAccidentalLeave from './AM/SubmitAccidentalLeave';
+import MaternityLeave from './AM/MaternityLeave';
+import SickLeave from './AM/SickLeave';
+import Dayoff from './AM/Dayoff';
+import SlotLinking from './AM/SlotLinking';
+import ViewReplacement from './AM/ViewReplacement'
+import ViewSchedule from './AM/ViewSchedule';
+import ViewMaternity from './AM/ViewMaternity';
+import Cancelpendingcomp from './AM/Cancelpendingcomp';
+import CancelMaternity from './AM/CancelMaternity';
+import CancelDayoff from './AM/CancelDayoff';
+import ViewCompensation from './AM/ViewCompensation';
+import ViewDayOff from './AM/ViewDayOff';
+import ViewSick from './AM/ViewSick';
+import ViewSlotLinking from './AM/ViewSlotLinking'
 
 function App() {
   const DefaultContainer = ()=>(
@@ -121,10 +184,10 @@ function App() {
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet"></link>
     
-      <Route path="/Home">
+      {/* <Route path="/Home">
         <HomeHR />
-      </Route>
-      <Route path="/Home/Faculties">
+      </Route> */}
+      <Route path="/Faculties">
         <Faculties />
       </Route>
       <Route path="/Faculties/AddNewFaculty">
@@ -184,6 +247,10 @@ function App() {
       <Route path="/Staff/HRstaff/DeleteHR">
         <DeleteHR />
       </Route>
+      
+
+
+      
       <Route path="/Staff/AcademicMembers/DeleteAM">
         <DeleteAM />
       </Route>
@@ -252,6 +319,8 @@ function App() {
       <Route path="/CourseSlotsC/UpdateCourseSlot" component={UpdateCourseSlot} />
         
       <Route path="/CourseSlotsC/DeleteCourseSlot" component={DeleteCourseSlot} />
+      <Route path="/NotificationsHR" component={NotificationsHR} />
+      <Route path="/NotificationsAM" component={NotificationsAM} />
         
       {/* /** Menna's Routes */ }
       <Route path="/HomeInstructor" component={HomeInstructor}/>
@@ -307,6 +376,115 @@ function App() {
     <Route path="/RejectSickLeaveHOD" component={RejectSickLeaveHOD}/>
     <Route path="/Submitted" component={Submitted}/>
     <Route path="/Viewsickleave" component= {Viewsickleave}/>
+
+    {/* Miral's Routes */}
+
+ 
+      <Route path="/HomeHR" component= {HomeHR}/>
+      <Route path="/ViewProfileHR" component= {ViewProfileHR}/>
+      <Route path="/Attendance" component= {Attendance}/>
+      <Route path="/Locations" component= {Locations}/>
+      <Route path="/ViewAllAttendanceRecords" component= {ViewAllAttendanceRecords}/>
+      <Route path="/ViewAttendanceRecordsByMonth" component= {ViewAttendanceRecordsByMonth}/>
+      <Route path="/Leaves" component= {Leaves}/>  
+      <Route path="/AddLocation" component= {AddLocation}/>
+      <Route path="/DeleteLocation" component= {DeleteLocation}/>
+      <Route path="/UpdateLocation" component= {UpdateLocation}/>
+      <Route path="/Success" component= {Success}/>
+      <Route path="/SubmitALeaveRequest" component= {SubmitALeaveRequest}/>
+      <Route path="/SubmitAMaternityLeaveRequest" component= {SubmitAMaternityLeaveRequest}/>
+      <Route path="/SubmitACompensationLeaveRequest" component= {SubmitACompensationLeaveRequest}/>
+      <Route path="/SubmitAnAccidentalLeaveRequest" component= {SubmitAnAccidentalLeaveRequest}/>
+      <Route path="/ViewLeaveRequests" component= {ViewLeaveRequests}/>
+      <Route path="/ViewCompensationStatus" component= {ViewCompensationStatus}/>
+      <Route path="/ViewMaternityStatus" component= {ViewMaternityStatus}/>
+      <Route path="/ViewAccidentalStatus" component= {ViewAccidentalStatus}/> 
+      <Route path="/SubmitASickLeaveRequest" component= {SubmitASickLeaveRequest}/> 
+      <Route path="/SubmitAnAnnualLeaveRequest" component= {SubmitAnAnnualLeaveRequest}/> 
+      <Route path="/ViewSickStatus" component= {ViewSickStatus}/>
+      <Route path="/ViewAnnualStatus" component= {ViewAnnualStatus}/>
+      <Route path="/Logout" component= {UpdatedLogin}/>
+  
+
+ {/* Yassmin's routes */}
+ <Route path="/HomepageAM" component= {HomeAM}/>
+ <Route path="/Homepage/Viewprofile">
+          <Viewprofile/>
+        </Route>
+
+        <Route path="/Homepage/Signin">
+          <Signin/>
+        </Route>
+
+        <Route path="/Homepage/AttendanceAMM">
+          <AttendanceAMM/>
+        </Route>
+        <Route path="/Homepage/Requests">
+          <Requests/>
+        </Route>
+        <Route path="/Homepage/Requests/Replacement">
+          <Replacement/>
+        </Route>
+        <Route path="/Homepage/Requests/SubmitAccidentalLeave">
+          <SubmitAccidentalLeave/>
+        </Route>
+
+        <Route path="/Homepage/Requests/MaternityLeave">
+          <MaternityLeave/>
+        </Route>
+        
+        <Route path="/Homepage/Requests/SickLeave">
+          <SickLeave/>
+        </Route>
+
+        <Route path="/Homepage/Requests/Dayoff">
+          <Dayoff/>
+        </Route>
+
+        <Route path="/Homepage/Requests/SlotLinking">
+          <SlotLinking/>
+        </Route>
+
+        <Route path="/Homepage/ViewReplacement">
+          <ViewReplacement/>
+        </Route>
+        
+        <Route path="/Homepage/ViewSchedule">
+          <ViewSchedule/>
+        </Route>
+
+        <Route path="/Homepage/Requests/ViewMaternity">
+          <ViewMaternity/>
+        </Route>
+
+        <Route path="/Homepage/Requests/ViewCompensation">
+          <ViewCompensation/>
+        </Route>
+        
+        <Route path="/Homepage/Requests/ViewSlotLinking">
+          <ViewSlotLinking/>
+        </Route>
+
+        <Route path="/Homepage/Requests/ViewSick">
+          <ViewSick/>
+        </Route>
+
+        <Route path="/Homepage/Requests/ViewDayOff">
+          <ViewDayOff/>
+        </Route>
+        
+      
+        <Route path="/Homepage/Requests/Cancelpendingcomp">
+          <Cancelpendingcomp/>
+        </Route>
+
+        <Route path="/Homepage/Requests/CancelMaternity">
+          <CancelMaternity/>
+        </Route>
+
+        <Route path="/Homepage/Requests/CancelDayoff">
+          <CancelDayoff/>
+        </Route>
 
 
     </div>

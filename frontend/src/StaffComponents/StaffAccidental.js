@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import {Button} from 'react-bootstrap';
+import Navbar from '../NavbarHR.js';
 
 
 export default class StaffLeavesHR extends Component {
@@ -61,8 +62,19 @@ export default class StaffLeavesHR extends Component {
     render() {
         return (
             <div>
+            <Navbar />
+         <nav aria-label="breadcrumb">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item"><a href="/Home">Home</a></li>
+            <li className="breadcrumb-item"><a href="/Staff">Staff</a></li>
+            <li className="breadcrumb-item"><a href="/Staff/HRstaff">HRstaff</a></li>
+            <li className="breadcrumb-item"><a href="/Staff/HRstaff/Attendance">AttendanceHR</a></li>
+            <li className="breadcrumb-item"><a href="/Staff/HRstaff/Attendance/StaffLeaves">Leaves</a></li>
+            <li className="breadcrumb-item active" aria-current="page">AccidentalLeaves</li>
+          </ol>
+        </nav>
             <div>
-                <table>
+                <table id="requeststable">
                 <thead>
                     <tr>
                         <th>Request ID</th>
@@ -88,8 +100,9 @@ export default class StaffLeavesHR extends Component {
                 </table>  
             </div>
             <div>
-                Request ID:
-                <input name="reqid" type="text" reqid={this.state.reqid} onChange={this.handleChange}/>
+                <label>
+                <input name="reqid" placeholder="Request ID..." type="text" reqid={this.state.reqid} onChange={this.handleChange}/>
+                </label>
                 <Button onClick={this.acceptreq}>Accept</Button> 
                 <Button onClick={this.rejectreq}>Reject</Button>               
             </div>
