@@ -7,6 +7,7 @@ import Navbar from '../NavbarCC';
 import {Dropdown} from 'react-bootstrap';
 import HomeHOD from '../hod/HODhomepage';
 import HomeCI from '../CourseInstructor/HomeInstuctor';
+import HomeAM from '../AM/Homepage';
 import axios from 'axios';
 export default class CoordinatorHomeCont extends Component {
    
@@ -43,7 +44,7 @@ export default class CoordinatorHomeCont extends Component {
     }
 
     HomeAM(event){
-        this.setState({RedirectToHomeAM:"/StaffAM/AddStaffMember"})
+        this.setState({RedirectToHomeAM:"/HomepageAM"})
         event.preventDefault()
     }
  
@@ -131,6 +132,9 @@ export default class CoordinatorHomeCont extends Component {
         }
         if(this.state.RedirectToHomeCI){
             return<Redirect to ={this.state.RedirectToHomeCI} Component={HomeCI}/>
+        }
+        if(this.state.RedirectToHomeAM){
+            return<Redirect to ={this.state.RedirectToHomeAM} Component={HomeAM}/>
         }
         if(this.state.RedirectToHomeHOD){
             return<Redirect to ={this.state.RedirectToHomeHOD} Component={HomeHOD}/>

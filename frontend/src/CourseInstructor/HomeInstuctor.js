@@ -11,6 +11,7 @@ import axios from 'axios';
 import {Dropdown} from "react-bootstrap";
 import HomeCC from '../CourseCoordinator/CoordinatorHomeCont';
 import HomeHOD from '../hod/HODhomepage';
+import HomeAM from '../AM/Homepage'
 
 
    
@@ -51,7 +52,7 @@ import HomeHOD from '../hod/HODhomepage';
     }
 
     HomeAM(event){
-        this.setState({RedirectToHomeAM:"/StaffAM/AddStaffMember"})
+        this.setState({RedirectToHomeAM:"/HomepageAM"})
         event.preventDefault()
     }
     HomeCC(event){
@@ -117,6 +118,9 @@ import HomeHOD from '../hod/HODhomepage';
         }
         if(this.state.RedirectToCourses){
             return<Redirect to ={this.state.RedirectToCourses} Component={Course}/>
+        }
+        if(this.state.RedirectToHomeAM){
+            return<Redirect to ={this.state.RedirectToHomeAM} Component={HomeAM}/>
         }
         if(this.state.RedirectToHomeCC){
             return<Redirect to ={this.state.RedirectToHomeCC} Component={HomeCC}/>
