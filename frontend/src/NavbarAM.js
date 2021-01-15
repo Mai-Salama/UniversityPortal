@@ -12,12 +12,13 @@ import Logout from './logout';
 import ViewProfileAM from './AM/ViewprofileAM';
 import Modal from 'react-modal'
 
+
 class Navbar extends Component{
 
     constructor(){
         super();
         this.state={
-            RedirectToHomeHR:null,
+            RedirectToHomeAM:null,
             RedirectToProfile:null,
             RedirectToNotification:null,
             RedirectOnLogout:null
@@ -26,6 +27,7 @@ class Navbar extends Component{
         this.HomeAM=this.HomeAM.bind(this);
         this.Notifications=this.Notifications.bind(this);
         this.Logout=this.Logout.bind(this);
+        this.ProfileAM=this.ProfileAM.bind(this)
     }
 
     HomeAM(event){
@@ -61,7 +63,7 @@ class Navbar extends Component{
 
 
     render(){
-        if(this.state.RedirectToHomeHR){
+        if(this.state.RedirectToHomeAM){
             return<Redirect to ={this.state.RedirectToHomeAM} Component={Homepage}/>
         }
         if(this.state.RedirectToProfile){
