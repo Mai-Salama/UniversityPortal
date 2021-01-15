@@ -64,6 +64,9 @@ import AddNewCourseSlot from './CourseCoordinator/AddNewCourseSlot';
 import UpdateCourseSlot from './CourseCoordinator/UpdateCourseSlot';
 import DeleteCourseSlot from './CourseCoordinator/DeleteCourseSlot';
 //Menna's Course Instructor
+import ViewProfileCI from './CourseInstructor/ViewProfileCI'
+import ViewProfileCC from './CourseCoordinator/ViewProfileCC';
+import ViewProfileHOD from './hod/ViewProfileHOD'
 import HomeInstructor from './CourseInstructor/HomeInstuctor';
 import StaffAM from './CourseInstructor/StaffAM';
 import Course from './CourseInstructor/Course';
@@ -339,6 +342,11 @@ function App() {
        <Route path="/StaffAM/ViewStaffbyDep" component={ViewStaffbyDep}/>
        <Route path="/StaffAM/ViewStaffbyCourse" component={ViewStaffbyCourse}/>
 
+
+
+       <Route path="/ViewProfileCI" component={ViewProfileCI}/>
+       <Route path="/ViewProfileCC" component={ViewProfileCC}/>
+       <Route path="/ViewProfileHOD" component={ViewProfileHOD}/>
 
        {/* Mariam's Routes  */}
     
