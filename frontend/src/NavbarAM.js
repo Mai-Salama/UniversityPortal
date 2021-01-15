@@ -10,7 +10,9 @@ import StaffAM from './CourseInstructor/StaffAM';
 import NotificationsAM from './NotificationsAM';
 import Logout from './logout';
 import axios from "axios";
-import Modal from 'react-modal'
+//import Modal from 'react-modal'
+import Viewprofile from './AM/Viewprofile';
+
 
 class Navbar extends Component{
 
@@ -38,31 +40,10 @@ class Navbar extends Component{
     }
 
 
-ProfileAM(){
-
-    axios.get('/viewprofile',{headers:{
-        'x-auth-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFjLTQiLCJlbWFpbCI6InJhbmEuYWhtZWRAZ3VjLmVkdS5lZyIsInJvbGUiOiJBTSIsImlhdCI6MTYwODkwMzIzOH0.JMVKdzKRV0DjbypXnWWSkaGN1ytn11B0CbdCOPU7JGA'
-    }})
-      .then (response =>{
-        this.setState({
-            name:response.data.name,
-            office:response.data.office,
-            email:response.data.email,
-           dayoff:response.data.dayoff,
-           salary:response.data.Salary
-
-        })
-        console.log("hiiiii")
-       console.log(response.data)
-      })
-      this.setState({
-        statemodal:true
-    })
-     
-}
-      
-  
-
+    ProfileAM(event){
+        this.setState({RedirectToHomeAM:"/Viewprofile"})
+        event.preventDefault()
+    }
     Logout(event){
         console.log("Logged Out");
         this.setState({RedirectOnLogout:"/Logout"})
@@ -78,7 +59,7 @@ ProfileAM(){
             statemodal:false
 
         })
-    }s
+    }
 
 
     render(){
@@ -92,9 +73,13 @@ ProfileAM(){
         if(this.state.RedirectOnLogout){
             return<Redirect to ={this.state.RedirectOnLogout} Component={Logout}/>
         }
+        if(this.state.RedirectToProfile){
+            return<Redirect to ={this.state.RedirectToProfile} Component={this.Viewprofile}/>
+        }
+
         return(
             <nav className="NavbarItems">
-                 <Modal isOpen={this.state.statemodal} >
+                 {/* <Modal isOpen={this.state.statemodal} >
       
 
     
@@ -108,7 +93,7 @@ ProfileAM(){
       <button onClick={this.handleClose.bind(this)} >
             close 
             </button>
-      </Modal>
+      </Modal> */}
     <h1 className="navbar-logo">GUC<i class="fas fa-university"></i></h1>
     <div className="menu-icon" onClick={this.handleClick}>
             <i className={this.state.clicked ? 'fas fa-times': 'fas fa-bars'}></i>
