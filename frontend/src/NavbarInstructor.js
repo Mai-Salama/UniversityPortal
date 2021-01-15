@@ -86,7 +86,6 @@ class Navbar extends Component{
         <Button onClick={this.HomeAM}> {MenuItems[0].title}<i class={MenuItems[0].icon}></i> </Button>
         <Button onClick={this.ProfileAM}>{MenuItems[1].title}<i class={MenuItems[1].icon}></i> </Button>
         <Button onClick={this.Notifications}>{MenuItems[2].title}<i class={MenuItems[2].icon}></i> </Button>
-        <Button >{MenuItems[3].title}<i class={MenuItems[3].icon}></i> </Button>
         <Button onClick={this.Logout}>{MenuItems[4].title}<i class={MenuItems[4].icon}></i> </Button>
 
         {/* <Button></Button> */}
