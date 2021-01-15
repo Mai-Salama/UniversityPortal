@@ -33,10 +33,13 @@ import Viewsickleave from "./Viewsickleave"
 import Viewaccidental from "./Viewaccidental"
  import Viewmaternity from "./Viewmaternity"
  import Viewcompensation from "./Viewcompensation"
- import HomeCI from '../CourseInstructor/HomeInstuctor';
-import axios from 'axios';
-import HomeCC from '../CourseCoordinator/CoordinatorHomeCont';
 
+import axios from 'axios';
+
+// imports of dropdown
+import HomeCC from '../CourseCoordinator/CoordinatorHomeCont';
+import HomeCI from '../CourseInstructor/HomeInstuctor';
+import HomeAM from '../AM/Homepage'
 
 export default class HODhomepage extends Component{
     constructor(props){
@@ -290,7 +293,7 @@ export default class HODhomepage extends Component{
     }
 
     HomeAM(event){
-        this.setState({RedirectToHomeAM:"/StaffAM/AddStaffMember"})
+        this.setState({RedirectToHomeAM:"/HomepageAM"})
         event.preventDefault()
     }
     HomeCC(event){
@@ -350,7 +353,9 @@ export default class HODhomepage extends Component{
     }
 
     render(){
-      
+        if(this.state.RedirectToHomeAM){
+            return<Redirect to ={this.state.RedirectToHomeAM} Component={HomeAM}/>
+        }
         if(this.state.RedirectToHomeCC){
             return<Redirect to ={this.state.RedirectToHomeCC} Component={HomeCC}/>
         }

@@ -19,7 +19,12 @@ class Navbar extends Component{
         this.state={
             RedirectToHomeAM:null,
             RedirectToProfile:null,
-            statemodal:true
+            statemodal:false,
+            name:"",
+            office:"",
+            email:"",
+           dayoff:"",
+           salary:""
         }
         this.HomeAM=this.HomeAM.bind(this);
         this.ProfileAM=this.ProfileAM.bind(this);
@@ -41,7 +46,7 @@ class Navbar extends Component{
 ProfileAM(){
 
     axios.get('/viewprofile',{headers:{
-        'x-auth-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFjLTQiLCJlbWFpbCI6InJhbmEuYWhtZWRAZ3VjLmVkdS5lZyIsInJvbGUiOiJBTSIsImlhdCI6MTYwODkwMzIzOH0.JMVKdzKRV0DjbypXnWWSkaGN1ytn11B0CbdCOPU7JGA'
+        'x-auth-token':localStorage.getItem('savedToken')
     }})
       .then (response =>{
         this.setState({
@@ -49,15 +54,14 @@ ProfileAM(){
             office:response.data.office,
             email:response.data.email,
            dayoff:response.data.dayoff,
-           salary:response.data.Salary
+           salary:response.data.Salary,
+           statemodal:true
 
         })
         console.log("hiiiii")
        console.log(response.data)
       })
-      this.setState({
-        statemodal:true
-    })
+     
      
 }
       
