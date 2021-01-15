@@ -3,7 +3,7 @@ import axios from 'axios';
 import {Redirect} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import Signin from './Signin'
-import Viewprofile from './Viewprofile';
+import ViewProfileAM from './ViewprofileAM';
 import AttendanceAMM from './AttendanceAMM';
 import Requests from './Requests';
 import Replacement from './Replacement';
@@ -122,7 +122,7 @@ componentDidMount=()=>{
 
 
     viewprofile(event){
-        this.setState({redirectToViewprofile:"/Homepage/Viewprofile"});
+        this.setState({redirectToViewprofile:"/ViewprofileAM"});
         event.preventDefault();
     }
     signin(event){
@@ -165,7 +165,7 @@ componentDidMount=()=>{
 
 render(){
     if(this.state.redirectToViewprofile){
-        return<Redirect to={this.state.redirectToViewprofile} Component={ViewprofileAM}/>
+        return<Redirect to={this.state.redirectToViewprofile} Component={ViewProfileAM}/>
     }
     if(this.state.redirectToSignin){
         return<Redirect to={this.state.redirectToSignin} Component={Signin}/>
