@@ -21,7 +21,12 @@ class Navbar extends Component{
         this.state={
             RedirectToHomeAM:null,
             RedirectToProfile:null,
-            statemodal:true
+            statemodal:false,
+            name:"",
+            office:"",
+            email:"",
+           dayoff:"",
+           salary:""
         }
         this.HomeAM=this.HomeAM.bind(this);
         this.ProfileAM=this.ProfileAM.bind(this);
@@ -44,6 +49,9 @@ class Navbar extends Component{
         this.setState({RedirectToHomeAM:"/Viewprofile"})
         event.preventDefault()
     }
+
+
+
     Logout(event){
         console.log("Logged Out");
         this.setState({RedirectOnLogout:"/Logout"})

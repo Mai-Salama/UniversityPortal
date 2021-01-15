@@ -10,6 +10,11 @@ import Replacement from './Replacement';
 import ViewReplacement from './ViewReplacement';
 import ViewSchedule from './ViewSchedule';
 import Navbar from '../NavbarAM'
+import {Dropdown} from 'react-bootstrap'
+
+import HomeCC from '../CourseCoordinator/CoordinatorHomeCont';
+import HomeCI from '../CourseInstructor/HomeInstuctor';
+import HomeHOD from '../hod/HODhomepage';
 
  import Modal from 'react-modal';
 export default class Homepage extends Component {
@@ -23,6 +28,16 @@ export default class Homepage extends Component {
             redirectToViewprofile:null,
             redirectToViewreplacement:null,
             redirectToViewSchedule:null,
+            RedirectToHomeAM:null,
+            RedirectToHomeCC:null,
+            RedirectToHomeCI:null,
+            RedirectToHomeHOD:null,
+            stateCC:"",
+            stateCI:"",
+            stateHOD:"",
+            DisabledCC:false,
+            DisabledCI:false,
+            DisabledHOD:false
 
         };
         this.viewprofile=this.viewprofile.bind(this);
@@ -30,8 +45,11 @@ export default class Homepage extends Component {
         this.attendance=this.attendance.bind(this);
         this.requests=this.requests.bind(this);
         this.viewreplacement=this.viewreplacement.bind(this);
-        this.viewschedule=this.viewschedule.bind(this)
-
+        this.viewschedule=this.viewschedule.bind(this);
+     
+        this.HomeCC=this.HomeCC.bind(this);
+        this.HomeCI=this.HomeCI.bind(this);
+        this.HomeHOD=this.HomeHOD.bind(this);
 
 }
 viewprofile=()=>{
@@ -57,6 +75,48 @@ axios.get('/viewprofile',{headers:{
   
 }
 
+componentDidMount=()=>{
+    axios.get('/getRole', {
+        headers:{
+'x-auth-token':localStorage.getItem('savedToken')
+        }
+       
+      })
+      .then(response => {
+        this.setState({
+            
+            stateCC:response.data.CC,
+            stateCI:response.data.CI,
+            stateHOD:response.data.HOD
+
+        })
+
+        if(this.state.stateCC=="0"){
+            this.setState({
+                DisabledCC:true
+            })
+        }
+
+        if(this.state.stateCI=="0"){
+            this.setState({
+                DisabledCI:true
+            })
+        }
+
+        if(this.state.stateHOD=="0"){
+            this.setState({
+                DisabledHOD:true
+            })
+        }
+      //console.log(this.state.Roles);
+
+    })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    
+}
 
 
 
@@ -90,6 +150,18 @@ axios.get('/viewprofile',{headers:{
     }
     
     
+    HomeCC(event){
+        this.setState({RedirectToHomeCC:"/HomeC"});
+        event.preventDefault();
+    }
+    HomeCI(event){
+        this.setState({RedirectToHomeCI:"/HomeInstructor"});
+        event.preventDefault();
+    }
+    HomeHOD(event){
+        this.setState({RedirectToHomeHOD:"/HODhomepage"});
+        event.preventDefault();
+    }
 
 render(){
     if(this.state.redirectToViewprofile){
@@ -112,6 +184,15 @@ render(){
     if(this.state.redirectToViewSchedule){
         return<Redirect to={this.state.redirectToViewSchedule} Component={ViewSchedule}/>
     }
+    if(this.state.RedirectToHomeHOD){
+        return<Redirect to ={this.state.RedirectToHomeHOD} Component={HomeHOD}/>
+    }
+    if(this.state.RedirectToHomeCC){
+        return<Redirect to ={this.state.RedirectToHomeCC} Component={HomeCC}/>
+    }
+    if(this.state.RedirectToHomeCI){
+        return<Redirect to ={this.state.RedirectToHomeCI} Component={HomeCI}/>
+    }
       
         return(
 
@@ -133,6 +214,18 @@ render(){
       <h3>day-off is {this.state.dayoff}</h3>
       <h3>salary is {this.state.salary}</h3>
       </Modal>
+
+      <Dropdown>
+                <Dropdown.Toggle  id="dropdown1"style={{alignSelf:"center",marginLeft:550, marginTop:70 }}>
+                <i class="fas fa-eye"></i>  Navigate 
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                    <Dropdown.Item as="button"  disabled="true">Academic Member</Dropdown.Item>
+                    <Dropdown.Item as="button"  onClick={this.HomeCC} disabled={this.state.DisabledCC}>Course Coordinator</Dropdown.Item> 
+                    <Dropdown.Item as="button"  onClick={this.HomeCI}disabled={this.state.DisabledCI}>Course Instructor</Dropdown.Item> 
+                    <Dropdown.Item as="button"  onClick={this.HomeHOD}disabled={this.state.DisabledHOD}>Head Of Department</Dropdown.Item> 
+                </Dropdown.Menu>
+            </Dropdown>
             <button onClick={this.viewprofile}  class="homebutton" type="button" id="loginSubmit">View Profile</button>
             <button onClick={this.signin} class="homebutton" type="button"id="loginSubmit">Sign In Page</button>
             <button  type="button" class="homebutton" id="loginSubmit">View Schedule</button>
