@@ -6,6 +6,7 @@ import HomeHR from './home-hr.component';
 import HomeC from './CourseCoordinator/CoordinatorHomeCont';
 import ChangePasswordAM from './ChangePasswordAM';
 import ChangePasswordHR from './ChangePasswordHR';
+import HomeAM from './AM/Homepage';
 
 //import {Button} from 'react-bootstrap';
 
@@ -37,7 +38,7 @@ export default class UpdatedLogin extends Component {
             let token = response.headers['x-auth-token'];
             localStorage.setItem("savedToken", token);
             if(response.data.roleToSend == "AM" && response.data.reset == "reset"){
-                this.setState({redirect: "/HomeC"});
+                this.setState({redirect: "/HomepageAM"});
             }
             if(response.data.roleToSend == "AM" && response.data.reset == "notreset"){
                 this.setState({redirect: "/ChangePasswordAM"});
@@ -55,8 +56,8 @@ export default class UpdatedLogin extends Component {
     };
    
     render() {
-        if(this.state.redirect == "/HomeC"){
-            return <Redirect to={this.state.redirect} Component={HomeC}/>
+        if(this.state.redirect == "/HomepageAM"){
+            return <Redirect to={this.state.redirect} Component={HomeAM}/>
         }
         if(this.state.redirect == "/ChangePasswordAM"){
             return <Redirect to={this.state.redirect} Component={ChangePasswordAM}/>

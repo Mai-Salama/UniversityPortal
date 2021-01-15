@@ -17,6 +17,7 @@ class Navbar extends Component{
     constructor(){
         super();
         this.state={
+            redirectToViewprofile:null,
             RedirectToHomeAM:null,
             RedirectToProfile:null,
             statemodal:false,
@@ -30,6 +31,7 @@ class Navbar extends Component{
         this.ProfileAM=this.ProfileAM.bind(this);
         this.Notifications=this.Notifications.bind(this);
         this.Logout=this.Logout.bind(this);
+        this.viewprofile=this.viewprofile.bind(this);
     }
 
     HomeAM(event){
@@ -65,7 +67,25 @@ ProfileAM(){
      
 }
       
-  
+viewprofile=()=>{
+    axios.get('/viewprofile',{headers:{
+        'x-auth-token':localStorage.getItem('savedToken')
+    }})
+      .then (response =>{
+        this.setState({
+            name:response.data.name,
+            office:response.data.office,
+            email:response.data.email,
+           dayoff:response.data.dayoff,
+           salary:response.data.Salary
+    
+        })
+        console.log("hiiiii")
+       console.log(response.data)
+      })
+      this.setState({
+        statemodal:true
+    })}
 
     Logout(event){
         console.log("Logged Out");
@@ -133,7 +153,7 @@ ProfileAM(){
         
         </ul> */}
         <Button onClick={this.HomeAM}> {MenuItems[0].title}<i class={MenuItems[0].icon}></i> </Button>
-        <Button onclick={this.ProfileAM}>{MenuItems[1].title}<i class={MenuItems[1].icon}></i> </Button>
+        <Button onclick={this.viewprofile}>{MenuItems[1].title}<i class={MenuItems[1].icon}></i> </Button>
         <Button onClick={this.Notifications}>{MenuItems[2].title}<i class={MenuItems[2].icon}></i> </Button>
         <Button >{MenuItems[3].title}<i class={MenuItems[3].icon}></i> </Button>
         <Button onClick={this.Logout}>{MenuItems[4].title}<i class={MenuItems[4].icon}></i> </Button>

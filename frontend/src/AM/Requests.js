@@ -8,7 +8,7 @@ import MaternityLeave from './MaternityLeave';
 import Dayoff from './Dayoff';
 import slotlinking from './SlotLinking';
 import ViewMaternity from './ViewMaternity'
-
+import SubmitCompensationAM from './SubmitCompensationAM'
 import SickLeave from './SickLeave';
 import SlotLinking from './SlotLinking';
 import Cancelpendingcomp from './Cancelpendingcomp';
@@ -38,7 +38,8 @@ export default class Requests extends Component {
             redirectToViewDayOff:null,
             redirectToViewReplacement:null,
             redirectToViewSick:null,
-            redirectToViewSlotLinking:null
+            redirectToViewSlotLinking:null,
+            redirectToSubmitCompensation:null
         };
         
         this.submitaccidentalLeave =this.submitaccidentalLeave.bind(this);
@@ -56,12 +57,18 @@ export default class Requests extends Component {
        
         this.viewsick=this.viewsick.bind(this)
         this.viewslotlinking=this.viewslotlinking.bind(this)
+        this.submitcompensation=this.submitcompensation.bind(this)
 }
  
 viewcompensation(event){
     this.setState({redirectToViewCompensation:"/Homepage/Requests/ViewCompensation"});
     event.preventDefault();
 }
+submitcompensation(event){
+    this.setState({redirectToSubmitCompensation:"/Homepage/Requests/SubmitCompensationAM"});
+    event.preventDefault();
+}
+
 viewdayoff(event){
     this.setState({redirectToViewDayOff:"/Homepage/Requests/ViewDayOff"});
     event.preventDefault();
@@ -182,13 +189,14 @@ render(){
     }
 
     
-
+    if(this.state.redirectToSubmitCompensation){
+        return<Redirect to={this.state.redirectToSubmitCompensation} Component={SubmitCompensationAM}/>
+    }
         return(
            
           <div class="text-left">
             <h3>Welcome to your Requests!</h3>
             <Navbar/>
-            <button  type="button" class="homebutton" id="loginSubmit"> Leaves</button>
             <button onClick={this.replacement} class="homebutton" type="button" id="loginSubmit">Replacement Request</button>
          
             <button onClick={this.dayoff} class="homebutton" type="button" id="loginSubmit">DayOff Request</button>
@@ -204,6 +212,7 @@ render(){
             <button onClick={this.viewdayoff} class="homebutton"  type="button" id="loginSubmit"> View DayOff</button>
             <button onClick={this.viewslotlinking} class="homebutton"  type="button" id="loginSubmit"> View SlotLinking</button>
             <button onClick={this.viewsick} class="homebutton"  type="button" id="loginSubmit"> View Sick</button>
+            <button onClick={this.submitcompensation} class="homebutton"  type="button" id="loginSubmit"> Submit Compensation</button>
 
           </div>
         
