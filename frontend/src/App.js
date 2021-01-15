@@ -165,7 +165,9 @@ import CancelDayoff from './AM/CancelDayoff';
 import ViewCompensation from './AM/ViewCompensation';
 import ViewDayOff from './AM/ViewDayOff';
 import ViewSick from './AM/ViewSick';
-import ViewSlotLinking from './AM/ViewSlotLinking'
+import ViewSlotLinking from './AM/ViewSlotLinking';
+import SubmitCompensationAM from './AM/SubmitCompensationAM'
+
 
 function App() {
   const DefaultContainer = ()=>(
@@ -484,6 +486,10 @@ function App() {
 
         <Route path="/Homepage/Requests/CancelDayoff">
           <CancelDayoff/>
+        </Route>
+
+        <Route path="/Homepage/Requests/SubmitCompensationAM">
+          <SubmitCompensationAM/>
         </Route>
 
 
