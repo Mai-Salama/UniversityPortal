@@ -60,6 +60,8 @@ export default class Viewprofile extends Component {
       <h3>email is {this.state.email}</h3>
       <h3>day-off is {this.state.dayoff}</h3>
       <h3>salary is {this.state.salary}</h3>
+
+      <button> Close </button>
       </Modal>
       </div>
       

@@ -37,7 +37,8 @@ export default class Homepage extends Component {
             stateHOD:"",
             DisabledCC:false,
             DisabledCI:false,
-            DisabledHOD:false
+            DisabledHOD:false,
+            statemodal:false
 
         };
         this.viewprofile=this.viewprofile.bind(this);
@@ -51,6 +52,8 @@ export default class Homepage extends Component {
         this.HomeCI=this.HomeCI.bind(this);
         this.HomeHOD=this.HomeHOD.bind(this);
 
+
+        this.handlClose=this.handlClose.bind(this);
 }
 viewprofile=()=>{
 axios.get('/viewprofile',{headers:{
@@ -162,7 +165,10 @@ componentDidMount=()=>{
         this.setState({RedirectToHomeHOD:"/HODhomepage"});
         event.preventDefault();
     }
-
+    handlClose(){
+        this.setState({statemodal:false});
+       
+    }
 render(){
     if(this.state.redirectToViewprofile){
         return<Redirect to={this.state.redirectToViewprofile} Component={Viewprofile}/>
@@ -213,6 +219,8 @@ render(){
       <h3>email is {this.state.email}</h3>
       <h3>day-off is {this.state.dayoff}</h3>
       <h3>salary is {this.state.salary}</h3>
+
+      <button onClick={this.handlClose.bind(this)}> Close </button>
       </Modal>
 
       <Dropdown>
@@ -226,7 +234,6 @@ render(){
                     <Dropdown.Item as="button"  onClick={this.HomeHOD}disabled={this.state.DisabledHOD}>Head Of Department</Dropdown.Item> 
                 </Dropdown.Menu>
             </Dropdown>
-            <button onClick={this.viewprofile}  class="homebutton" type="button" id="loginSubmit">View Profile</button>
             <button onClick={this.signin} class="homebutton" type="button"id="loginSubmit">Sign In Page</button>
             <button  type="button" class="homebutton" id="loginSubmit">View Schedule</button>
             <button onClick={this.requests} class="homebutton" type="button" id="loginSubmit">Requests</button>
