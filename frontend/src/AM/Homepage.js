@@ -165,7 +165,7 @@ componentDidMount=()=>{
 
 render(){
     if(this.state.redirectToViewprofile){
-        return<Redirect to={this.state.redirectToViewprofile} Component={Viewprofile}/>
+        return<Redirect to={this.state.redirectToViewprofile} Component={ViewprofileAM}/>
     }
     if(this.state.redirectToSignin){
         return<Redirect to={this.state.redirectToSignin} Component={Signin}/>
